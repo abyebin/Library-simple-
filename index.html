@@ -13,8 +13,10 @@
   </head>
   <body>
 <!-- popUp form -->
-    <div id="form-div" class="popUpForm">
-        <form action="post" id="addBookForm">
+    <div id="form-div" class="popUpForm" style="display: none;" >
+        <form action="" id="addBookForm">
+
+
 
             <div class="input-div">
                 <label  for="title">Title</label>
@@ -31,8 +33,12 @@
                 <input type="checkbox" id="read-status" name="read-status">
             </div>
 
-            <div class="input-div checkbox">
+            <div id="submitButton" class="input-div">
                 <input type="submit">
+            </div>
+
+            <div id="closeButton" class="input-div">
+                <input type="submit" value="Close">
             </div>
 
 
@@ -59,7 +65,7 @@
         <div class="books-shelf"></div>
 
         <div class="add-new-button-div">
-          <i class="fa-solid fa-book-medical"></i>
+          <i id="button-add-new" class="fa-solid fa-book-medical"></i>
         </div>
         <!-- button-div-end -->
       </div>
