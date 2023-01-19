@@ -118,3 +118,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.books-shelf{
+    width: 100%;
+    height: 100vh;
+}
