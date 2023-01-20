@@ -61,21 +61,46 @@ function booksToPage() {
 
     for (let i in myLibrary) {
       const para = document.createElement('p');
-      para.textContent = `${i.toUpperCase()}: ${myLibrary[i].toUpperCase()}`;
+      para.textContent = `${i.toUpperCase()}:
+      ${myLibrary[i].toUpperCase()}`;
       container.appendChild(para);
     }
   });
 }
 
-addBookToLibrary('Harry Potter', 'jkr', 'false');
-addBookToLibrary('aadu ', 'Paappan', 'true');
-addBookToLibrary('Hu are you', 'jkr', 'true');
-addBookToLibrary('kops', 'jack', 'true');
-addBookToLibrary('new nazii', 'danieb', 'true');
-addBookToLibrary('noo nowe', 'jimm', 'true');
-addBookToLibrary('qwuet', 'yokkei', 'true');
-addBookToLibrary('neaw the qeot', 'zeomn', 'true');
-addBookToLibrary('bloen', 'petros', 'true');
+// addBookToLibrary('Harry Potter', 'jkr', 'false');
+// addBookToLibrary('aadu ', 'Paappan', 'true');
+// addBookToLibrary('Hu are you', 'jkr', 'true');
+// addBookToLibrary('kops', 'jack', 'true');
+// addBookToLibrary('new nazii', 'danieb', 'true');
+// addBookToLibrary('noo nowe', 'jimm', 'true');
+// addBookToLibrary('qwuet', 'yokkei', 'true');
+// addBookToLibrary('neaw the qeot', 'zeomn', 'true');
+// addBookToLibrary('bloen', 'petros', 'true');
 
-console.log(myLibrary);
 booksToPage();
+
+submitButton.addEventListener('click', takeFormInput);
+
+let title = document.getElementById('title').value;
+console.log(title)
+
+// "function for taking datas from input"
+function takeFormInput() {
+  let title = document.getElementById('title').value;
+  let author = document.getElementById('author').value;
+  let read = document.getElementById('read-status').checked;
+
+  // if data is not completed return
+  if((title == "") ||( author == ""))
+  return 
+
+addBookToLibrary(title, author, read)
+booksToPage();
+
+formDiv.setAttribute('style', 'display: none');
+document.getElementById("form-div").reset();
+
+}
+
+
