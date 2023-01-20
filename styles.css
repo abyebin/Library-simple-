@@ -53,7 +53,7 @@ body {
 }
 
 .add-new-button-div {
-  position: absolute;
+  position: fixed;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -122,4 +122,43 @@ body {
 .books-shelf{
     width: 100%;
     height: 100vh;
+    padding: 10px;
+}
+
+#books-shelf{
+  display: grid;
+  grid-template: repeat(auto-fill,minmax(200px,1fr))/repeat(3, 1fr);
+  gap: 15px;
+
+}
+
+.card{
+  background-color: var(--color5);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+#books-shelf .card:nth-child(odd){
+  background-color: var(--color4);
+}
+.card p{
+  margin: 5px 0;
+  font-size: 1.3rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.iconsDiv{
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.iconsDiv i{
+  margin: 0 5px;
+  font-size: 25px;
+  cursor: pointer;
 }

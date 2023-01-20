@@ -17,13 +17,13 @@ closeButton.addEventListener('click', function () {
 // odin sample storage model
 let myLibrary = [];
 
-function Book(title, author, readStatus) {
+function Book(title, author, read) {
   this.title = title;
   this.author = author;
-  this.readStatus = readStatus;
-  this.info = function () {
-    return `The book "${title}" is written by "${author}".`;
-  };
+  this.read = read;
+  // this.info = function () {
+  //   return `The book "${title}" is written by "${author}".`;
+  // };
 }
 
 // function for adding book to library array
@@ -41,18 +41,41 @@ function booksToPage() {
     card.classList.add('card');
     books.appendChild(card);
 
-    for (let key in myLibrary) {
+    const container = document.createElement('div');
+    container.classList.add('card-container');
+    card.appendChild(container);
+
+    const iconsDiv = document.createElement('div');
+    iconsDiv.classList.add('iconsDiv');
+    card.appendChild(iconsDiv);
+
+    const eye = document.createElement('i');
+    eye.classList.add('fa-solid');
+    eye.classList.add('fa-eye');
+    iconsDiv.appendChild(eye);
+
+    const trash = document.createElement('i');
+    trash.classList.add('fa-solid');
+    trash.classList.add('fa-trash');
+    iconsDiv.appendChild(trash);
+
+    for (let i in myLibrary) {
       const para = document.createElement('p');
-      para.textContent = `${key}: ${myLibrary[key]}`;
-      card.appendChild(para);
+      para.textContent = `${i.toUpperCase()}: ${myLibrary[i].toUpperCase()}`;
+      container.appendChild(para);
     }
   });
 }
 
-addBookToLibrary('Harry', 'jkr', 'true');
-addBookToLibrary('new', 'eb', 'true');
-addBookToLibrary('Harry', 'jkr', 'true');
-addBookToLibrary('new', 'eb', 'true');
+addBookToLibrary('Harry Potter', 'jkr', 'false');
+addBookToLibrary('aadu ', 'Paappan', 'true');
+addBookToLibrary('Hu are you', 'jkr', 'true');
+addBookToLibrary('kops', 'jack', 'true');
+addBookToLibrary('new nazii', 'danieb', 'true');
+addBookToLibrary('noo nowe', 'jimm', 'true');
+addBookToLibrary('qwuet', 'yokkei', 'true');
+addBookToLibrary('neaw the qeot', 'zeomn', 'true');
+addBookToLibrary('bloen', 'petros', 'true');
 
 console.log(myLibrary);
 booksToPage();
