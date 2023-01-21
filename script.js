@@ -17,10 +17,9 @@ closeButton.addEventListener('click', function () {
 // odin sample storage model
 let myLibrary = [];
 
-function Book(title, author, read) {
+function Book(title, author) {
   this.title = title;
   this.author = author;
-  this.read = read;
   // this.info = function () {
   //   return `The book "${title}" is written by "${author}".`;
   // };
@@ -28,8 +27,9 @@ function Book(title, author, read) {
 
 // function for adding book to library array
 function addBookToLibrary(title, author, readStatus) {
-  let book = new Book(title, author, readStatus);
+  let book = new Book(title, author);
   myLibrary.push(book);
+  booksToPage()
 }
 
 // books to page
@@ -78,8 +78,6 @@ function booksToPage() {
 // addBookToLibrary('neaw the qeot', 'zeomn', 'true');
 // addBookToLibrary('bloen', 'petros', 'true');
 
-booksToPage();
-
 submitButton.addEventListener('click', takeFormInput);
 
 let title = document.getElementById('title').value;
@@ -89,17 +87,17 @@ console.log(title)
 function takeFormInput() {
   let title = document.getElementById('title').value;
   let author = document.getElementById('author').value;
-  let read = document.getElementById('read-status').checked;
+  event.preventDefault();
+  document.getElementById("books-shelf").innerHTML = ""
+
 
   // if data is not completed return
-  if((title == "") ||( author == ""))
-  return 
+  
+  // if((title == "") ||( author == ""))
+  // return 
 
-addBookToLibrary(title, author, read)
-booksToPage();
-
+addBookToLibrary(title, author)
 formDiv.setAttribute('style', 'display: none');
-document.getElementById("form-div").reset();
 
 }
 
