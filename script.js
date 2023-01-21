@@ -3,6 +3,18 @@ const formDiv = document.getElementById('form-div');
 const submitButton = document.getElementById('submitButton');
 const closeButton = document.getElementById('closeButton');
 const inpuTitle = document.getElementById('title');
+const resetButton = document.getElementById('resetButton');
+const addBookForm = document.getElementById('addBookForm');
+
+// addEventListener
+
+// fucntion for reseting form
+resetButton.addEventListener('click',reset)
+
+function reset(){
+  event.preventDefault();
+  addBookForm.reset();
+}
 
 // function for displaying the form
 addNewBookButton.addEventListener('click', function () {
@@ -29,7 +41,8 @@ function Book(title, author) {
 function addBookToLibrary(title, author, readStatus) {
   let book = new Book(title, author);
   myLibrary.push(book);
-  booksToPage()
+  booksToPage();
+  reset()
 }
 
 // books to page
@@ -81,24 +94,20 @@ function booksToPage() {
 submitButton.addEventListener('click', takeFormInput);
 
 let title = document.getElementById('title').value;
-console.log(title)
+console.log(title);
 
 // "function for taking datas from input"
 function takeFormInput() {
   let title = document.getElementById('title').value;
   let author = document.getElementById('author').value;
   event.preventDefault();
-  document.getElementById("books-shelf").innerHTML = ""
-
+  document.getElementById('books-shelf').innerHTML = '';
 
   // if data is not completed return
-  
+
   // if((title == "") ||( author == ""))
-  // return 
+  // return
 
-addBookToLibrary(title, author)
-formDiv.setAttribute('style', 'display: none');
-
+  addBookToLibrary(title, author);
+  formDiv.setAttribute('style', 'display: none');
 }
-
-
