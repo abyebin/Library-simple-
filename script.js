@@ -6,53 +6,31 @@ const inpuTitle = document.getElementById('title');
 const resetButton = document.getElementById('resetButton');
 const addBookForm = document.getElementById('addBookForm');
 
-// addEventListener
+//library array
+myLibrary = [];
 
-// fucntion for reseting form
-resetButton.addEventListener('click',reset)
+//funnctions
+function displayForm() {
+  formDiv.setAttribute('style', 'display: flex');
+}
 
-function reset(){
+function closeForm() {
   event.preventDefault();
+  formDiv.setAttribute('style', 'display: none');
+}
+
+function resetForm() {
   addBookForm.reset();
 }
 
-// function for displaying the form
-addNewBookButton.addEventListener('click', function () {
-  formDiv.setAttribute('style', 'display: flex');
-});
+function displayToPage() {
+  const booksShelf = document.getElementById('books-shelf');
 
-// function for close the form
-closeButton.addEventListener('click', function () {
-  formDiv.setAttribute('style', 'display: none');
-});
-
-// odin sample storage model
-let myLibrary = [];
-
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
-  // this.info = function () {
-  //   return `The book "${title}" is written by "${author}".`;
-  // };
-}
-
-// function for adding book to library array
-function addBookToLibrary(title, author, readStatus) {
-  let book = new Book(title, author);
-  myLibrary.push(book);
-  booksToPage();
-  reset()
-}
-
-// books to page
-function booksToPage() {
-  const books = document.getElementById('books-shelf');
-  //looping throgh array and display on page
   myLibrary.forEach((myLibrary) => {
     const card = document.createElement('div');
+
     card.classList.add('card');
-    books.appendChild(card);
+    booksShelf.appendChild(card);
 
     const container = document.createElement('div');
     container.classList.add('card-container');
@@ -74,40 +52,62 @@ function booksToPage() {
 
     for (let i in myLibrary) {
       const para = document.createElement('p');
-      para.textContent = `${i.toUpperCase()}:
-      ${myLibrary[i].toUpperCase()}`;
+      para.textContent = `${i}:
+      ${myLibrary[i]}`;
       container.appendChild(para);
     }
   });
 }
 
-// addBookToLibrary('Harry Potter', 'jkr', 'false');
-// addBookToLibrary('aadu ', 'Paappan', 'true');
-// addBookToLibrary('Hu are you', 'jkr', 'true');
-// addBookToLibrary('kops', 'jack', 'true');
-// addBookToLibrary('new nazii', 'danieb', 'true');
-// addBookToLibrary('noo nowe', 'jimm', 'true');
-// addBookToLibrary('qwuet', 'yokkei', 'true');
-// addBookToLibrary('neaw the qeot', 'zeomn', 'true');
-// addBookToLibrary('bloen', 'petros', 'true');
+function addnewBook() {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const readStatus = document.getElementById('read-status').checked;
+  const numberOfPages = document.getElementById('number').value;
 
-submitButton.addEventListener('click', takeFormInput);
+  function readOrNot(){
+    if(readStatus === true){
+      return "Yes"
+    }
+    else return "No"
+  }
 
-let title = document.getElementById('title').value;
-console.log(title);
+  let book = new Book(title, author, numberOfPages, readOrNot());
 
-// "function for taking datas from input"
-function takeFormInput() {
-  let title = document.getElementById('title').value;
-  let author = document.getElementById('author').value;
+  if (title == '' || author == '') {
+    alert('Please provide valid info');
+  } else myLibrary.push(book);
+
+  const booksShelf = (document.getElementById('books-shelf').innerHTML = '');
+
+  //to prevent page from refreshing
   event.preventDefault();
-  document.getElementById('books-shelf').innerHTML = '';
 
-  // if data is not completed return
-
-  // if((title == "") ||( author == ""))
-  // return
-
-  addBookToLibrary(title, author);
-  formDiv.setAttribute('style', 'display: none');
+  displayToPage();
+  closeForm();
+  resetForm();
 }
+
+//constructor
+function Book(title, author, numberOfPages, read) {
+  this.Title = title;
+  this.Author = author;
+  this.Pages = numberOfPages;
+  this.Read = read;
+}
+
+// add event listners
+//click add button
+addNewBookButton.addEventListener('click', displayForm);
+
+//close form
+closeButton.addEventListener('click', closeForm);
+
+//reset form
+resetButton.addEventListener('click', resetForm);
+
+//submit Button
+submitButton.addEventListener('click', addnewBook);
+
+//test area
+console.log(myLibrary);
