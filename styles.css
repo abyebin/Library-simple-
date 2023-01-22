@@ -137,28 +137,31 @@ body {
   padding: 10px;
   border-radius: 5px;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
 
 }
 
 #books-shelf .card:nth-child(odd){
   background-color: var(--color4);
 }
-.card p{
+.card h2{
   margin: 5px 0;
-  font-size: 1.3rem;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .iconsDiv{
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  gap: 20px;
+  display: grid;
+  gap: 15px;
+  grid-template: 1fr/1fr 1fr;
 }
 
-.iconsDiv i{
-  margin: 0 5px;
-  font-size: 25px;
-  cursor: pointer;
+.iconsDiv .fa-solid{
+  float:left;
+  width:30px;   
+  text-align:center;
+}
+
+.iconsDiv .fa-solid:hover{
+  font-size: 32px;
 }

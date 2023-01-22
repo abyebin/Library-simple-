@@ -29,7 +29,7 @@ function displayToPage() {
   myLibrary.forEach((myLibrary) => {
     const card = document.createElement('div');
 
-    card.classList.add('card');
+    card.classList.add("card");
     booksShelf.appendChild(card);
 
     const container = document.createElement('div');
@@ -51,8 +51,8 @@ function displayToPage() {
     iconsDiv.appendChild(trash);
 
     for (let i in myLibrary) {
-      const para = document.createElement('p');
-      para.textContent = `${i}:
+      const para = document.createElement('h2');
+      para.textContent = `${i}: 
       ${myLibrary[i]}`;
       container.appendChild(para);
     }
@@ -76,7 +76,7 @@ function addnewBook() {
 
   if (title == '' || author == '') {
     alert('Please provide valid info');
-  } else myLibrary.push(book);
+  } else myLibrary.unshift(book);
 
   const booksShelf = (document.getElementById('books-shelf').innerHTML = '');
 
