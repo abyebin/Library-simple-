@@ -16,6 +16,8 @@ function displayForm() {
 
 function closeForm() {
   event.preventDefault();
+  resetForm();
+  const booksShelf = (document.getElementById('books-shelf').innerHTML = '');
   formDiv.setAttribute('style', 'display: none');
 }
 
@@ -23,14 +25,12 @@ function resetForm() {
   addBookForm.reset();
 }
 
-
 function displayToPage() {
   const booksShelf = document.getElementById('books-shelf');
 
-  myLibrary.forEach((myLibrary) => {
+  myLibrary.forEach((x) => {
     const card = document.createElement('div');
-
-    card.classList.add("card");
+    card.classList.add('card');
     booksShelf.appendChild(card);
 
     const container = document.createElement('div');
@@ -51,10 +51,16 @@ function displayToPage() {
     trash.classList.add('fa-trash');
     iconsDiv.appendChild(trash);
 
-    for (let i in myLibrary) {
+    trash.addEventListener('click', function () {
+      let bookIndex = myLibrary.indexOf(x);
+      myLibrary.splice(bookIndex, 1);
+      card.remove();
+    });
+
+    for (let i in x) {
       const para = document.createElement('h2');
       para.textContent = `${i}: 
-      ${myLibrary[i]}`;
+      ${x[i]}`;
       container.appendChild(para);
     }
   });
@@ -66,11 +72,10 @@ function addnewBook() {
   const readStatus = document.getElementById('read-status').checked;
   const numberOfPages = document.getElementById('number').value;
 
-  function readOrNot(){
-    if(readStatus === true){
-      return "Yes"
-    }
-    else return "No"
+  function readOrNot() {
+    if (readStatus === true) {
+      return 'Yes';
+    } else return 'No';
   }
 
   let book = new Book(title, author, numberOfPages, readOrNot());
@@ -79,14 +84,8 @@ function addnewBook() {
     alert('Please provide valid info');
   } else myLibrary.unshift(book);
 
-  const booksShelf = (document.getElementById('books-shelf').innerHTML = '');
-
-  //to prevent page from refreshing
-  event.preventDefault();
-
-  displayToPage();
   closeForm();
-  resetForm();
+  displayToPage();
 }
 
 //constructor

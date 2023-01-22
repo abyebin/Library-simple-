@@ -8,53 +8,48 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-<!-- popUp form -->
-    <div id="form-div" class="popUpForm" style="display: none;" >
-        <form action="" id="addBookForm">
+    <!-- popUp form -->
+    <div id="form-div" class="popUpForm" style="display: none">
+      <form action="" id="addBookForm">
+        <div class="input-div title-div">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" />
+        </div>
 
+        <div class="input-div author-div">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author" />
+        </div>
 
+        <div class="input-div pages-div">
+          <label for="author">Number of Pages</label>
+          <input type="number" id="number" name="number" />
+        </div>
 
-            <div class="input-div title-div">
-                <label  for="title">Title</label>
-                <input type="text" id="title" name="title">
-            </div>
+        <div class="input-div checkbox">
+          <label for="read-status">Complete Reading</label>
+          <input type="checkbox" id="read-status" name="read-status" />
+        </div>
 
-            <div class="input-div author-div">
-                <label  for="author">Author</label>
-                <input type="text" id="author" name="author" >
-            </div>
+        <div class="input-div submit-div">
+          <input id="submitButton" type="submit" />
+        </div>
 
-            <div class="input-div pages-div">
-              <label  for="author">Number of Pages</label>
-              <input type="number" id="number" name="number" >
-          </div>
+        <div class="input-div close-div">
+          <input id="closeButton" type="submit" value="Close" />
+        </div>
 
-            <div class="input-div checkbox">
-                <label  for="read-status">Complete Reading</label>
-                <input type="checkbox" id="read-status" name="read-status">
-            </div>
+        <div class="input-div reset-div">
+          <input id="resetButton" type="reset" value="Reset-Form" />
+        </div>
+      </form>
+    </div>
 
-            <div  class="input-div submit-div">
-                <input id="submitButton" type="submit">
-            </div>
+    <!-- popUpForm end -->
 
-            <div  class="input-div close-div">
-                <input id="closeButton" type="submit" value="Close">
-            </div>
-
-            <div  class="input-div reset-div">
-              <input id="resetButton" type="reset" value="Reset-Form">
-          </div>
-          
-
-        </form>
-      </div>
-
-      <!-- popUpForm end -->
-
-      <div class="add-new-button-div">
-        <i id="button-add-new" class="fa-solid fa-book-medical"></i>
-      </div>
+    <div class="add-new-button-div">
+      <i id="button-add-new" class="fa-solid fa-book-medical"></i>
+    </div>
 
     <div class="main">
       <div class="nav">
@@ -62,16 +57,13 @@
           <h1 id="logo-text">EA Library</h1>
           <i class="fa-solid fa-book-atlas"></i>
         </div>
-        
 
         <div class="search-div">search option goes here</div>
         <div class="buttons-nav">Nav buttons here</div>
-
       </div>
       <!-- nav-end -->
       <div class="main-body">
         <div id="books-shelf" class="books-shelf"></div>
-
 
         <!-- button-div-end -->
       </div>
@@ -80,5 +72,8 @@
     <!-- main-end -->
   </body>
   <script src="script.js"></script>
-  <script src="https://kit.fontawesome.com/c1a867654a.js" crossorigin="anonymous"></script>
+  <script
+    src="https://kit.fontawesome.com/c1a867654a.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
