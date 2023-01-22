@@ -91,7 +91,7 @@ body {
   background-color: var(--color5);
   opacity: 0.8;
   width: 50%;
-  height: 90vh;
+min-height: fit-content;
   border-radius: 10px;
 }
 
@@ -151,7 +151,9 @@ body {
 }
 
 .iconsDiv{
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 15px;
   grid-template: 1fr/1fr 1fr;
 }
@@ -164,4 +166,6 @@ body {
 
 .iconsDiv .fa-solid:hover{
   font-size: 32px;
+  color: var(--color2);
+  cursor: pointer;
 }

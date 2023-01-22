@@ -23,6 +23,7 @@ function resetForm() {
   addBookForm.reset();
 }
 
+
 function displayToPage() {
   const booksShelf = document.getElementById('books-shelf');
 
@@ -110,4 +111,3 @@ resetButton.addEventListener('click', resetForm);
 submitButton.addEventListener('click', addnewBook);
 
 //test area
-console.log(myLibrary);
