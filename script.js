@@ -28,6 +28,8 @@ function resetForm() {
 function displayToPage() {
   const booksShelf = document.getElementById('books-shelf');
 
+  let index = 0;
+
   myLibrary.forEach((x) => {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -44,6 +46,7 @@ function displayToPage() {
     const eye = document.createElement('i');
     eye.classList.add('fa-solid');
     eye.classList.add('fa-eye');
+    eye.dataset.linkedArray = index;
     iconsDiv.appendChild(eye);
 
     const trash = document.createElement('i');
@@ -55,6 +58,25 @@ function displayToPage() {
       let bookIndex = myLibrary.indexOf(x);
       myLibrary.splice(bookIndex, 1);
       card.remove();
+    });
+
+
+    eye.addEventListener('click', function () {
+      const yesOrNo = eye.dataset.linkedArray;
+      Book.prototype = Object.create(Book.prototype);
+      const toggleBook = new Book();
+      console.log(toggleBook)
+      console.log(Book.prototype)
+      if(myLibrary[parseInt(yesOrNo)].Read == "Yes"){
+        toggleBook.Read = "No"
+        console.log("no",myLibrary[parseInt(yesOrNo)].Read)
+        myLibrary[parseInt(yesOrNo)].Read = toggleBook.Read;
+      }else {
+        toggleBook.Read = "Yes";
+        console.log("Yes",myLibrary[parseInt(yesOrNo)].Read)
+        myLibrary[parseInt(yesOrNo)].Read = toggleBook.Read;
+      }
+
     });
 
     for (let i in x) {
@@ -82,7 +104,7 @@ function addnewBook() {
 
   if (title == '' || author == '') {
     alert('Please provide valid info');
-  } else myLibrary.unshift(book);
+  } else myLibrary.push(book);
 
   closeForm();
   displayToPage();

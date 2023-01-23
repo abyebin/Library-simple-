@@ -159,7 +159,6 @@ min-height: fit-content;
 }
 
 .iconsDiv .fa-solid{
-  float:left;
   width:30px;   
   text-align:center;
 }
@@ -169,3 +168,8 @@ min-height: fit-content;
   color: var(--color2);
   cursor: pointer;
 }
+
+.iconsDiv .fa-solid:active{
+  color: var(--color1);
+}
+h2:nth-child()
