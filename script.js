@@ -6,6 +6,7 @@ const inpuTitle = document.getElementById('title');
 const resetButton = document.getElementById('resetButton');
 const addBookForm = document.getElementById('addBookForm');
 
+
 //library array
 myLibrary = [];
 
@@ -17,7 +18,6 @@ function displayForm() {
 function closeForm() {
   event.preventDefault();
   resetForm();
-  const booksShelf = (document.getElementById('books-shelf').innerHTML = '');
   formDiv.setAttribute('style', 'display: none');
 }
 
@@ -27,8 +27,6 @@ function resetForm() {
 
 function displayToPage() {
   const booksShelf = document.getElementById('books-shelf');
-
-  let index = 0;
 
   myLibrary.forEach((x) => {
     const card = document.createElement('div');
@@ -46,7 +44,6 @@ function displayToPage() {
     const eye = document.createElement('i');
     eye.classList.add('fa-solid');
     eye.classList.add('fa-eye');
-    eye.dataset.linkedArray = index;
     iconsDiv.appendChild(eye);
 
     const trash = document.createElement('i');
@@ -59,32 +56,47 @@ function displayToPage() {
       myLibrary.splice(bookIndex, 1);
       card.remove();
     });
-
-
-    eye.addEventListener('click', function () {
-      const yesOrNo = eye.dataset.linkedArray;
-      Book.prototype = Object.create(Book.prototype);
-      const toggleBook = new Book();
-      console.log(toggleBook)
-      console.log(Book.prototype)
-      if(myLibrary[parseInt(yesOrNo)].Read == "Yes"){
-        toggleBook.Read = "No"
-        console.log("no",myLibrary[parseInt(yesOrNo)].Read)
-        myLibrary[parseInt(yesOrNo)].Read = toggleBook.Read;
-      }else {
-        toggleBook.Read = "Yes";
-        console.log("Yes",myLibrary[parseInt(yesOrNo)].Read)
-        myLibrary[parseInt(yesOrNo)].Read = toggleBook.Read;
-      }
-
-    });
+  
+    console.log(x)
 
     for (let i in x) {
-      const para = document.createElement('h2');
+      console.log(i)
+      if(i === 'Read'){
+        const para = document.createElement('h2');
       para.textContent = `${i}: 
       ${x[i]}`;
+      para.setAttribute('id',`${x.Title}`)
       container.appendChild(para);
+      }else{
+        const para = document.createElement('h2');
+        para.textContent = `${i}: 
+        ${x[i]}`;
+        container.appendChild(para);
+      }
+
     }
+
+    // Add data-index attribute to card element
+card.setAttribute('data-index', myLibrary.indexOf(x));
+
+// Add click event listener to eye icon
+eye.addEventListener('click', function() {
+
+  const readS = document.getElementById(`${x.Title}`);
+  console.log(readS)
+
+  // Get the index of the book from the data-index attribute
+  let bookIndex = event.target.parentNode.parentNode.dataset.index;
+  // Update the read status of the book
+  if (myLibrary[bookIndex].Read === "Yes") {
+    myLibrary[bookIndex].Read = "No";
+    readS.innerHTML = "Read: No";
+  } else {
+    myLibrary[bookIndex].Read = "Yes";
+    readS.innerHTML = "Read: Yes";
+  }
+});
+
   });
 }
 
@@ -105,6 +117,8 @@ function addnewBook() {
   if (title == '' || author == '') {
     alert('Please provide valid info');
   } else myLibrary.push(book);
+
+  const booksShelf = (document.getElementById('books-shelf').innerHTML = '');
 
   closeForm();
   displayToPage();
