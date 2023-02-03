@@ -146,3 +146,12 @@ resetButton.addEventListener('click', resetForm);
 submitButton.addEventListener('click', addnewBook);
 
 //test area
+
+
+//form validation
+
+const title = document.querySelector('.title')
+const author = document.querySelector('#author')
+
+
+
